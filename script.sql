@@ -8,15 +8,12 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema serasa
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `serasa` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `serasa` ;
-
 -- -----------------------------------------------------
--- Table `serasa`.`estados`
+-- Table `estados`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `serasa`.`estados` ;
+DROP TABLE IF EXISTS `estados` ;
 
-CREATE TABLE IF NOT EXISTS `serasa`.`estados` (
+CREATE TABLE IF NOT EXISTS `estados` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -24,11 +21,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `serasa`.`cidades`
+-- Table `cidades`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `serasa`.`cidades` ;
+DROP TABLE IF EXISTS `cidades` ;
 
-CREATE TABLE IF NOT EXISTS `serasa`.`cidades` (
+CREATE TABLE IF NOT EXISTS `cidades` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `estados_id` INT NOT NULL,
@@ -36,18 +33,18 @@ CREATE TABLE IF NOT EXISTS `serasa`.`cidades` (
   INDEX `fk_cidades_estados1_idx` (`estados_id` ASC),
   CONSTRAINT `fk_cidades_estados1`
     FOREIGN KEY (`estados_id`)
-    REFERENCES `serasa`.`estados` (`id`)
+    REFERENCES `estados` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `serasa`.`clientes`
+-- Table `clientes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `serasa`.`clientes` ;
+DROP TABLE IF EXISTS `clientes` ;
 
-CREATE TABLE IF NOT EXISTS `serasa`.`clientes` (
+CREATE TABLE IF NOT EXISTS `clientes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cpf` VARCHAR(45) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
@@ -56,18 +53,18 @@ CREATE TABLE IF NOT EXISTS `serasa`.`clientes` (
   INDEX `fk_clientes_cidades1_idx` (`cidades_id` ASC),
   CONSTRAINT `fk_clientes_cidades1`
     FOREIGN KEY (`cidades_id`)
-    REFERENCES `serasa`.`cidades` (`id`)
+    REFERENCES `cidades` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `serasa`.`estabelecimentos`
+-- Table `estabelecimentos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `serasa`.`estabelecimentos` ;
+DROP TABLE IF EXISTS `estabelecimentos` ;
 
-CREATE TABLE IF NOT EXISTS `serasa`.`estabelecimentos` (
+CREATE TABLE IF NOT EXISTS `estabelecimentos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `cidades_id` INT NOT NULL,
@@ -75,18 +72,18 @@ CREATE TABLE IF NOT EXISTS `serasa`.`estabelecimentos` (
   INDEX `fk_estabelecimentos_cidades1_idx` (`cidades_id` ASC),
   CONSTRAINT `fk_estabelecimentos_cidades1`
     FOREIGN KEY (`cidades_id`)
-    REFERENCES `serasa`.`cidades` (`id`)
+    REFERENCES `cidades` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `serasa`.`dividas`
+-- Table `dividas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `serasa`.`dividas` ;
+DROP TABLE IF EXISTS `dividas` ;
 
-CREATE TABLE IF NOT EXISTS `serasa`.`dividas` (
+CREATE TABLE IF NOT EXISTS `dividas` (
   `clientes_id` INT NOT NULL,
   `estabelecimentos_id` INT NOT NULL,
   `valor` DECIMAL(10,2) NOT NULL,
@@ -95,12 +92,12 @@ CREATE TABLE IF NOT EXISTS `serasa`.`dividas` (
   INDEX `fk_clientes_has_estabelecimentos_clientes_idx` (`clientes_id` ASC),
   CONSTRAINT `fk_clientes_has_estabelecimentos_clientes`
     FOREIGN KEY (`clientes_id`)
-    REFERENCES `serasa`.`clientes` (`id`)
+    REFERENCES `clientes` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_clientes_has_estabelecimentos_estabelecimentos1`
     FOREIGN KEY (`estabelecimentos_id`)
-    REFERENCES `serasa`.`estabelecimentos` (`id`)
+    REFERENCES `estabelecimentos` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

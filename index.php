@@ -1,9 +1,10 @@
 <?php
-require 'vendor/autoload.php';
+require 'Slim/Slim.php';
+\Slim\Slim::registerAutoloader();
 require 'clienteDAO.php';
 
 $app = new \Slim\Slim();
-$app->response()->header('Content-Type', 'application/json;charset=utf-8');
+//$app->response()->header('Content-Type', 'application/json;charset=utf-8');
 
 $app->get('/clientes/:cpf', function ($cpf) {
   //recupera o cliente
