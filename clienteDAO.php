@@ -1,10 +1,23 @@
 <?php
 
-require 'connection.php';
 
 class ClienteDAO
 {
 
+    public static function getClienteByID($id) {
+    $connection = Connection::getConnection();
+    $sql = "SELECT * FROM clientes WHERE id=$id";
+    $result  = mysqli_query($connection, $sql);
+    $cliente = mysqli_fetch_object($result);
+
+    //recupera cidade do cliente
+    $sql = "SELECT * FROM cidades WHERE id=$cliente->cidades_id";
+    $result = mysqli_query($connection, $sql);
+    $cliente->cidade =  mysqli_fetch_object($result);
+
+    return $cliente;
+  }
+    
   public static function getClienteByCPF($cpf) {
     $connection = Connection::getConnection();
     $sql = "SELECT * FROM clientes WHERE cpf=$cpf";

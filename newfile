@@ -1,0 +1,62 @@
+<?php
+
+class DividasDAO {
+
+    public static function getDividasByNome($nome) {
+        $connection = Connection::getConnection();
+        $sql = "SELECT * FROM dividas WHERE nome='$nome'";
+        $result = mysqli_query($connection, $sql);
+        $dividas = mysqli_fetch_object($result);
+
+        $sql = "SELECT nome FROM estados WHERE id=$dividas->estados_id";
+        $result = mysqli_query($connection, $sql);
+        $dividas->estado = mysqli_fetch_object($result);
+        return $dividas;
+    }
+
+    public static function getAll() {
+        $connection = Connection::getConnection();
+        $sql = "SELECT * FROM dividas";
+
+        // recupera todos os clientes
+        $result = mysqli_query($connection, $sql);
+        $dividas = array();
+        while ($divida = mysqli_fetch_object($result)) {
+            if ($divida != null) {
+                $dividas[] = $divida;
+            }
+        }
+        return $dividas;
+    }
+
+    public static function updateDividas($divida, $id) {
+        $connection = Connection::getConnection();
+        $sql = "UPDATE dividas SET nome='$divida->nome' WHERE id=$id";
+        $result = mysqli_query($connection, $sql);
+
+        $dividaAtualizado = DividasDAO::getDividasByNome($divida->nome);
+        return $dividaAtualizado;
+    }
+
+    public static function deleteDivida($id) {
+        $connection = Connection::getConnection();
+        $sql = "DELETE FROM dividas WHERE id=$id";
+        $result = mysqli_query($connection, $sql);
+
+        if ($result === FALSE) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static function addDivida($divida) {
+        $connection = Connection::getConnection();
+        $sql = "INSERT INTO dividas (nome, estados_id) VALUES ('$divida->nome',$divida->estados_id)";
+        $result = mysqli_query($connection, $sql);
+
+        $novoDivida = DividasDAO::getDividasByNome($divida->nome);
+        return $novoDivida;
+    }
+
+}
