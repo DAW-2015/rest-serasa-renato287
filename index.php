@@ -201,9 +201,9 @@ $app->delete('/cidades/:id', function($id) {
 });
 
 //Dividas
-$app->get('/dividas/:nome', function ($nome) {
+$app->get('/dividas/:estabelecimentoId/:clienteId', function ($estabelecimentoId, $clienteId) {
     //recupera o estabelecimento
-    $divida = DividasDAO::getDividasByNome($nome);
+    $divida = DividasDAO::getDividasByNome($estabelecimentoId, $clienteId);
     echo json_encode($divida);
 });
 
@@ -224,20 +224,20 @@ $app->post('/dividas', function() {
     echo json_encode($novoDivida);
 });
 
-$app->put('/dividas/:id', function ($id) {
+$app->put('/dividas/:estabelecimentoId/:clienteId', function ($estabelecimentoId, $clienteId) {
     // recupera o request
     $request = \Slim\Slim::getInstance()->request();
 
     // atualiza o estabelecimento
     $divida = json_decode($request->getBody());
-    $divida = DividasDAO::updateDividas($divida, $id);
+    $divida = DividasDAO::updateDividas($divida, $estabelecimentoId, $clienteId);
 
     echo json_encode($divida);
 });
 
-$app->delete('/dividas/:id', function($id) {
+$app->delete('/dividas/:estabelecimentoId/:clienteId', function($estabelecimentoId, $clienteId) {
     // exclui o divida
-    $isDeleted = DividasDAO::deleteDivida($id);
+    $isDeleted = DividasDAO::deleteDivida($estabelecimentoId, $clienteId);
 
     // verifica se houve problema na exclusão
     if ($isDeleted) {
@@ -247,3 +247,4 @@ $app->delete('/dividas/:id', function($id) {
     }
 });
 $app->run();
+?>

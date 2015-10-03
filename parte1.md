@@ -1,0 +1,132 @@
+#Parte 1 - Serviços
+*Renato Sérgio Lopes Júnior*
+
+- /clientes/:cpf **GET**
+	-  Parâmetros:
+		-  CPF do cliente a ser buscado.
+	-  Retorno:
+		-  JSON do cliente com o CPF. (Se não existir, retorna vazio).
+- /clientes **GET**
+	-  Parâmetros:
+		-  *Não possui parâmetros*.
+	-  Retorno:
+		-  JSON de todos os clientes cadastrados no banco. (Se não existir, retorna vazio).
+- /clientes **POST**
+	-  Parâmetros:
+		-  JSON do cliente a ser adicionado.
+	-  Retorno:
+		-  JSON do cliente adicionado.
+- /clientes/:id **PUT**
+	-  Parâmetros:
+		-  JSON do cliente a ser atualizado e o seu ID.
+	-  Retorno:
+		-  JSON do cliente atualizado.		
+- /clientes/:id **DELETE**
+	-  Parâmetros:
+		-  ID do cliente a ser removido.
+	-  Retorno:
+		-  Mensagem dizendo se removeu ou não.		
+
+- /estabelecimentos/:nome **GET**
+	-  Parâmetros:
+		-  Nome do estabelecimento a ser buscado.
+	-  Retorno:
+		-  JSON do estabelecimento com o Nome. (Se não existir, retorna vazio).
+- /estabelecimentos **GET**
+	-  Parâmetros:
+		-  *Não possui parâmetros*.
+	-  Retorno:
+		-  JSON de todos os estabelecimentos cadastrados no banco. (Se não existir, retorna vazio).
+- /estabelecimentos **POST**
+	-  Parâmetros:
+		-  JSON do estabelecimento a ser adicionado.
+	-  Retorno:
+		-  JSON do estabelecimento adicionado.
+- /estabelecimentos/:id **PUT**
+	-  Parâmetros:
+		-  JSON do estabelecimento a ser atualizado e o seu ID.
+	-  Retorno:
+		-  JSON do estabelecimento atualizado.		
+- /estabelecimentos/:id **DELETE**
+	-  Parâmetros:
+		-  ID do estabelecimento a ser removido.
+	-  Retorno:
+		-  Mensagem dizendo se removeu ou não.	
+
+- /estados/:nome **GET**
+	-  Parâmetros:
+		-  Nome do estado a ser buscado.
+	-  Retorno:
+		-  JSON do estado com o Nome. (Se não existir, retorna vazio).
+- /estados **GET**
+	-  Parâmetros:
+		-  *Não possui parâmetros*.
+	-  Retorno:
+		-  JSON de todos os estados cadastrados no banco. (Se não existir, retorna vazio).
+- /estados **POST**
+	-  Parâmetros:
+		-  JSON do estado a ser adicionado.
+	-  Retorno:
+		-  JSON do estado adicionado.
+- /estados/:id **PUT**
+	-  Parâmetros:
+		-  JSON do estado a ser atualizado e o seu ID.
+	-  Retorno:
+		-  JSON do estado atualizado.		
+- /estados/:id **DELETE**
+	-  Parâmetros:
+		-  ID do estado a ser removido.
+	-  Retorno:
+		-  Mensagem dizendo se removeu ou não.	
+
+- /cidades/:nome **GET**
+	-  Parâmetros:
+		-  Nome da cidade a ser buscada.
+	-  Retorno:
+		-  JSON da cidade com o Nome. (Se não existir, retorna vazio).
+- /cidades **GET**
+	-  Parâmetros:
+		-  *Não possui parâmetros*.
+	-  Retorno:
+		-  JSON de todas as cidades cadastradas no banco. (Se não existir, retorna vazio).
+- /cidades **POST**
+	-  Parâmetros:
+		-  JSON da cidade a ser adicionada.
+	-  Retorno:
+		-  JSON da cidade adicionada.
+- /cidades/:id **PUT**
+	-  Parâmetros:
+		-  JSON da cidade a ser atualizada e o seu ID.
+	-  Retorno:
+		-  JSON da cidade atualizada.		
+- /cidades/:id **DELETE**
+	-  Parâmetros:
+		-  ID da cidade a ser removida.
+	-  Retorno:
+		-  Mensagem dizendo se removeu ou não.	
+
+- /dividas/:estabelecimentoId/:clienteId **GET**
+	-  Parâmetros:
+		-  ID do estabelecimentos e ID do cliente da dívida a ser buscada.
+	-  Retorno:
+		-  JSON da dívida buscada.
+- /dividas **GET**
+	-  Parâmetros:
+		-  *Não possui parâmetros*.
+	-  Retorno:
+		-  JSON de todas as dividas cadastradas no banco. (Se não existir, retorna vazio).
+- /dividas **POST**
+	-  Parâmetros:
+		-  JSON da dívida a ser adicionada.
+	-  Retorno:
+		-  JSON da dívida adicionada.
+- /dividas/:estabelecimentoId/:clienteId **PUT**
+	-  Parâmetros:
+		-  ID do estabelecimento e ID do cliente da dívida a ser atualizada.
+	-  Retorno:
+		-  JSON da dívida atualizada.		
+- /dividas/:estabelecimentoId/:clienteId **DELETE**
+	-  Parâmetros:
+		-  ID do estabelecimento e ID do cliente da dívida a ser removida.
+	-  Retorno:
+		-  Mensagem dizendo se removeu ou não.	

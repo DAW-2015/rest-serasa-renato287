@@ -2,7 +2,7 @@
 
 class DividasDAO {
 
-    public static function getDividasByNome($estabelecimentoID, $clienteID) {
+    public static function getDividasByIds($estabelecimentoID, $clienteID) {
         $connection = Connection::getConnection();
         $sql = "SELECT * FROM dividas WHERE estabelecimentos_id=$estabelecimentoID AND clientes_id=$clienteID";
         $result = mysqli_query($connection, $sql);
@@ -28,18 +28,18 @@ class DividasDAO {
         return $dividas;
     }
 
-    public static function updateDividas($divida, $id) {
+    public static function updateDividas($divida, $estabelecimentoID, $clienteID) {
         $connection = Connection::getConnection();
-        $sql = "UPDATE dividas SET valor='$divida->valor' clientes_id=$divida->clientes_id estabelecimentos_id=$divida->estabelecimentos_id WHERE id=$id";
+        $sql = "UPDATE dividas SET valor='$divida->valor' clientes_id=$divida->clientes_id estabelecimentos_id=$divida->estabelecimentos_id WHERE estabelecimentos_id = $estabelecimentoID AND clientes_id = $clienteID";
         $result = mysqli_query($connection, $sql);
 
-        $dividaAtualizado = DividasDAO::getDividasByNome($divida->estabelecimentos_id, $divida->clientes_id);
+        $dividaAtualizado = DividasDAO::getDividasByIds($divida->estabelecimentos_id, $divida->clientes_id);
         return $dividaAtualizado;
     }
 
-    public static function deleteDivida($id) {
+    public static function deleteDivida($estabelecimentoID, $clienteID) {
         $connection = Connection::getConnection();
-        $sql = "DELETE FROM dividas WHERE id=$id";
+        $sql = "DELETE FROM dividas WHERE estabelecimentos_id = $estabelecimentoID AND clientes_id = $clienteID";
         $result = mysqli_query($connection, $sql);
 
         if ($result === FALSE) {
@@ -54,7 +54,7 @@ class DividasDAO {
         $sql = "INSERT INTO dividas (clientes_id,estabelecimentos_id,valor) VALUES ($divida->clientes_id, $divida->estabelecimentos_id, $divida->valor)";
         $result = mysqli_query($connection, $sql);
 
-        $novoDivida = DividasDAO::getDividasByNome($divida->estabelecimentos_id, $divida->clientes_id);
+        $novoDivida = DividasDAO::getDividasByIds($divida->estabelecimentos_id, $divida->clientes_id);
         return $novoDivida;
     }
 
