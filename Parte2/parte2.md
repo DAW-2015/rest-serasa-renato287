@@ -1,0 +1,81 @@
+#Parte 2 - TODO List - Serviços
+*Renato Sérgio Lopes Júnior*
+
+- /usuarios/:nome **GET**
+	-  Parâmetros:
+		-  Nome do usuário a ser buscado.
+	-  Retorno:
+		-  JSON do usuário com o Nome. (Se não existir, retorna vazio).
+- /usuarios **GET**
+	-  Parâmetros:
+		-  *Não possui parâmetros*.
+	-  Retorno:
+		-  JSON de todos os usuarios cadastrados no banco. (Se não existir, retorna vazio).
+- /usuarios **POST**
+	-  Parâmetros:
+		-  JSON do usuário a ser adicionado.
+	-  Retorno:
+		-  JSON do usuário adicionado.
+- /usuarios/:id **PUT**
+	-  Parâmetros:
+		-  JSON do usuário a ser atualizado e o seu ID.
+	-  Retorno:
+		-  JSON do usuário atualizado.		
+- /usuarios/:id **DELETE**
+	-  Parâmetros:
+		-  ID do usuário a ser removido.
+	-  Retorno:
+		-  Mensagem dizendo se removeu ou não.
+
+- /categorias/:nome **GET**
+	-  Parâmetros:
+		-  Nome da categoria a ser buscada.
+	-  Retorno:
+		-  JSON da categoria com o Nome. (Se não existir, retorna vazio).
+- /categorias **GET**
+	-  Parâmetros:
+		-  *Não possui parâmetros*.
+	-  Retorno:
+		-  JSON de todas as categorias cadastradas no banco. (Se não existir, retorna vazio).
+- /categorias **POST**
+	-  Parâmetros:
+		-  JSON da categoria a ser adicionada.
+	-  Retorno:
+		-  JSON da categoria adicionada.
+- /categorias/:id **PUT**
+	-  Parâmetros:
+		-  JSON da categoria a ser atualizada e o seu ID.
+	-  Retorno:
+		-  JSON do categoria atualizada.		
+- /categorias/:id **DELETE**
+	-  Parâmetros:
+		-  ID do categoria a ser removida.
+	-  Retorno:
+		-  Mensagem dizendo se removeu ou não.	
+
+
+- /tarefas/:descricao **GET**
+	-  Parâmetros:
+		-  Descriçao da tarefa a ser buscada.
+	-  Retorno:
+		-  JSON da tarefa com a Descriçao. (Se não existir, retorna vazio).
+- /tarefas **GET**
+	-  Parâmetros:
+		-  *Não possui parâmetros*.
+	-  Retorno:
+		-  JSON de todas as tarefas cadastradas no banco. (Se não existir, retorna vazio).
+- /tarefas **POST**
+	-  Parâmetros:
+		-  JSON da tarefa a ser adicionada.
+	-  Retorno:
+		-  JSON da tarefa adicionada.
+- /tarefas/:id **PUT**
+	-  Parâmetros:
+		-  JSON da tarefa a ser atualizada e o seu ID.
+	-  Retorno:
+		-  JSON do tarefa atualizada.		
+- /tarefas/:id **DELETE**
+	-  Parâmetros:
+		-  ID do tarefa a ser removida.
+	-  Retorno:
+		-  Mensagem dizendo se removeu ou não.	
